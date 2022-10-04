@@ -1,11 +1,8 @@
-
 <?php
 
 $formMethod = "post";
 $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -29,16 +26,15 @@ $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
             <input type="radio" id="division" name="operator" value="/">
             <label for="division">/</label><br>
 
-
      <input type="text" name="num1" id="num1"></input>
             <input type="text" name="num2" id="num2"></input>
             <input type="submit" name="calculate" id="submit" value="Calculcate"/><br>
                 </form>
-
-
     <?php
-        $num1 =  $_POST['num1'];
-        $num2 =  $_POST['num2'];
+        if (isset($_POST['num1']) && isset($_POST['num2']))  {
+            $num1 =  $_POST['num1'];
+            $num2 =  $_POST['num2'];
+        }
 
         function calculation($num1, $num2, $operator) {
             switch($operator) {
@@ -48,7 +44,6 @@ $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
                 case '/': return $num1 / $num2;
             }  
         } 
-
         if (isset($_POST['calculate'])) {
             if (isset($_POST['operator'])) {
                 $operator = $_POST['operator'];
@@ -57,6 +52,5 @@ $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
             }
         }
     ?>
-
     </body>
 </html>
