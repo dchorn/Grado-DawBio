@@ -36,4 +36,22 @@ addEventListener('DOMContentLoaded', function() {
     console.log(typeof myCat);
 
 
+    ////// Comunicacion con el Servidor
+    document.getElementById("valida").addEventListener("click", function() {
+        var name=document.getElementById("myName").value;    
+        var course=document.getElementById("myCourse").value;
+        let user = {
+            nom:name,
+            curs:course
+        };
+        console.log(user);
+        
+        //enviar aquest objecte al servidor:
+        let xhr = new XMLHttpRequest();
+        xhr.open();//obrir conexio
+        xhr.send(JSON.stringify(user));//enviament de dades
+        xhr.onload=function() { //esperar a rebre les dades
+             
+        };
+    });
 });
