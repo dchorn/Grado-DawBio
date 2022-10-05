@@ -40,18 +40,28 @@ addEventListener('DOMContentLoaded', function() {
     document.getElementById("valida").addEventListener("click", function() {
         var name=document.getElementById("myName").value;    
         var course=document.getElementById("myCourse").value;
-        let user = {
-            nom:name,
-            curs:course
+        let user = { // objeto js
+            nom: name,
+            curs: course
         };
-        console.log(user);
+        //console.log(user);
         
         //enviar aquest objecte al servidor:
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "../php/server.php");//obrir conexio
+        xhr.open("POST", "./php/server.php");//obrir conexio
+
         xhr.send(JSON.stringify(user));//enviament de dades
-        xhr.onload=function() { //esperar a rebre les dades
-             
+        xhr.onload=function(){ //esperar a rebre les dades
+
+            if (xhr.status !=200) { // analiza el estado http
+                alert(`ERROR! ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+            } else {
+                alert(`Hecho, obtenidos ${xhr.response.lenght} bytes`); // Respuesta
+                // xhr.response es un JSON que viene des de PHP.
+                console.log(xhr.response);
+                let responseServer = JSON.parse(xhr.response); // reconvertir la respuesta/ parsearla
+                document.getElementById("response").innerHTML=responseServer;
+            };
         };
     });
 });
