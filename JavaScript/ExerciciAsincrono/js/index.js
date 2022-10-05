@@ -48,7 +48,7 @@ addEventListener('DOMContentLoaded', function() {
         
         //enviar aquest objecte al servidor:
         let xhr = new XMLHttpRequest();
-        xhr.open();//obrir conexio
+        xhr.open("POST",);//obrir conexio
         xhr.send(JSON.stringify(user));//enviament de dades
         xhr.onload=function() { //esperar a rebre les dades
              
