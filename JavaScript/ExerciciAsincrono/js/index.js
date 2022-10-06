@@ -35,14 +35,14 @@ addEventListener('DOMContentLoaded', function() {
     console.log(myCat);
     console.log(typeof myCat);
 
-
     ////// Comunicacion con el Servidor
     document.getElementById("valida").addEventListener("click", function() {
         var name=document.getElementById("myName").value;    
         var course=document.getElementById("myCourse").value;
         let user = { // objeto js
             nom: name,
-            curs: course
+            curs: course,
+            edat: age
         };
         //console.log(user);
         
