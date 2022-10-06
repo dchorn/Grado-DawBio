@@ -26,7 +26,7 @@ $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
             <input type="radio" id="division" name="operator" value="/">
             <label for="division">/</label><br>
 
-     <input type="text" name="num1" id="num1"></input>
+     		<input type="text" name="num1" id="num1"></input>
             <input type="text" name="num2" id="num2"></input>
             <input type="submit" name="calculate" id="submit" value="Calculcate"/><br>
                 </form>
@@ -44,7 +44,7 @@ $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
                 case '/': return $num1 / $num2;
             }  
         } 
-        if (isset($_POST['calculate'])) {
+        if (isset($_post['calculate'])) {
             if (isset($_POST['operator'])) {
                 $operator = $_POST['operator'];
                 $result = calculation($num1, $num2, $operator);
