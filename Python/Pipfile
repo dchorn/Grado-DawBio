@@ -8,6 +8,8 @@ pandas = "*"
 numpy = "*"
 ipython = "*"
 tensorflow = "*"
+matplotlib = "*"
+pyqt5 = "*"
 
 [dev-packages]
 
