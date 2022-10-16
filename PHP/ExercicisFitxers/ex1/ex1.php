@@ -8,7 +8,6 @@ use dech\login as login;
 $formMethod = "post";
 $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
 
-
 if (isset($_POST["submit"])) {
 	$userLogin = login\checkLogin(htmlspecialchars($_POST["nombre"]), htmlspecialchars($_POST["contra"]));
 }

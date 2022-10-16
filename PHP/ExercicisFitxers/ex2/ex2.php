@@ -6,9 +6,17 @@ use dech\register as register;
 $formMethod = "post";
 $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
 
-if (isset($_POST['submit'])) {
-
+if (isset($_POST["submit"])) {
+	$userInDB = register\checkLogin(htmlspecialchars($_POST["nombre"]), htmlspecialchars($_POST["contra"]));
+	if($userInDB == true) {
+		$userExists = true;
+	} else {
+		register\writeFile(htmlspecialchars($_POST["nombre"]), htmlspecialchars($_POST["contra"]));
+		$userCreated = true;
+	}
 }
+//if (isset($_POST["submit"])) {
+//}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,12 +38,12 @@ if (isset($_POST['submit'])) {
 			<input type="submit" name="submit" id="submit" value="Enviar"/>
 	</form>
 	<?php
-	if(isset($userLogin)) {
-		$response = match ($userLogin) {
-			true => "<p>Se ha iniciado sesion correctamente!</p>",
-			false => "<p>Error! Los datos introducidos son incorrectos.</p>"
-		};
-		echo $response;
+	if(isset($userInDB)) {
+		if (isset($userExists)) {
+			echo "<p>The user is on the Database.</p>";
+		} else if (isset($userCreated)) {
+			echo "<p>User Created \"" . htmlentities($_POST["nombre"]) . "\"</p>";
+		}
 	}	
 	?>
 	</body>
