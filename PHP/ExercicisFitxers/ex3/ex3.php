@@ -3,6 +3,8 @@
 include_once "lib.php";
 use dech\text as tx;
 
+use function dech\text\printArr;
+
 $formMethod = "post";
 $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
 
@@ -39,8 +41,7 @@ $files = (tx\scanDirectory(DB_PATH));
 					$fullDir = tx\createFullDir($selected);
 					$strFile = tx\strFile($fullDir);
 					$initials = tx\countInitials($strFile);
-					echo '<p>You selected: ' . $selected . '</p>';
-					print_r($initials);
+					printArr($initials);
 				} 
 				else {
 					echo '<p>Please, select a value.</p>';

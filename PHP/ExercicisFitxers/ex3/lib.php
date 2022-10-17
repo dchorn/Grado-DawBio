@@ -43,7 +43,7 @@ function removeSpecialChar(string $char): string {
 
 function countInitials(string $text): array {
 	$result = [];
-	$as = [];
+	$array= [];
 
 	foreach(explode(' ', $text) as $word) {
 		if (!empty($word)) {
@@ -54,14 +54,22 @@ function countInitials(string $text): array {
 	sort($result);
 	
 	foreach($result as $letter) {
-		if(!array_key_exists($letter, $as)) {
-			$as[$letter] = 1;
+		if(!array_key_exists($letter, $array)) {
+			$array[$letter] = 1;
 		} else {
-			$as[$letter] += 1;
+			$array[$letter] += 1;
 		}
 	}
 
-	return $as;
+	return $array;
 }
+
+function printArr(array $array) {
+	foreach($array as $key => $value) {
+		echo "<p>Hay " . $value. " palabras que comienzan con " . $key . "</p>";
+	}
+
+}
+
 }
 ?>
