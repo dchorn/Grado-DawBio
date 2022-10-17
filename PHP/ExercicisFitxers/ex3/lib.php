@@ -66,7 +66,7 @@ function countInitials(string $text): array {
 
 function printArr(array $array) {
 	foreach($array as $key => $value) {
-		echo "<p>Hay " . $value. " palabras que comienzan con " . $key . "</p>";
+		echo "<p>Hay " . $value. " palabras que comienzan con una " . $key . "</p>";
 	}
 }
 
