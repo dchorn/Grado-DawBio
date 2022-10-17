@@ -3,13 +3,10 @@
 include_once "lib.php";
 use dech\text as tx;
 
-use function dech\text\printArr;
-
 $formMethod = "post";
 $formInput  = ($formMethod=="post") ? INPUT_POST : INPUT_GET;
 
 $files = (tx\scanDirectory(DB_PATH));
-
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +15,10 @@ $files = (tx\scanDirectory(DB_PATH));
 		<title>Formulario Nombre</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			fieldset {background-color: lightgray;}
-		</style>
 	</head>
 	<body>
 	<form name="nombre-form" method="<?php echo $formMethod?>" action="<?php echo htmlentities($_SERVER["PHP_SELF"]);?>">
-			<fieldset>Text:</fieldset>
-			<h1>The option element</h1>
+			<h1>Letter Count</h1>
 			<label for="cars">Choose a car:</label>
 			<select name="filesOption">
 			<option value="" disabled selected>Choose option</option>
@@ -37,11 +30,7 @@ $files = (tx\scanDirectory(DB_PATH));
 			<?php
 			if(isset($_POST['submit'])) {
 				if(!empty($_POST['filesOption'])) {
-					$selected = $_POST['filesOption'];
-					$fullDir = tx\createFullDir($selected);
-					$strFile = tx\strFile($fullDir);
-					$initials = tx\countInitials($strFile);
-					printArr($initials);
+					tx\textLetterCount($_POST['filesOption']);	
 				} 
 				else {
 					echo '<p>Please, select a value.</p>';

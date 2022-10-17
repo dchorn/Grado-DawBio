@@ -68,8 +68,13 @@ function printArr(array $array) {
 	foreach($array as $key => $value) {
 		echo "<p>Hay " . $value. " palabras que comienzan con " . $key . "</p>";
 	}
-
 }
 
+function textLetterCount(string $text) {
+	$fullDir = createFullDir($text);
+	$strFile = strFile($fullDir);
+	$initials = countInitials($strFile);
+	printArr($initials);
+}
 }
 ?>
