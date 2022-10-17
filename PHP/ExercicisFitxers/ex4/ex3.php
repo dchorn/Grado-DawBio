@@ -37,10 +37,9 @@ $files = (tx\scanDirectory(DB_PATH));
 				if(!empty($_POST['filesOption'])) {
 					$selected = $_POST['filesOption'];
 					$fullDir = tx\createFullDir($selected);
-					$strFile = tx\strFile($fullDir);
-					$initials = tx\countInitials($strFile);
+					$letterCount = tx\countLetters($fullDir);
 					echo '<p>You selected: ' . $selected . '</p>';
-					print_r($initials);
+					echo "<br><textarea>" . $letterCount . "</textarea>";
 				} 
 				else {
 					echo '<p>Please, select a value.</p>';
