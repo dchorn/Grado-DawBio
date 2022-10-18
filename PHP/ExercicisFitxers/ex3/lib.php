@@ -26,13 +26,6 @@ function printOptions(array $files): void {
 	}
 }
 
-function readFile(string $path): string {
-
-	$text = fopen($path, "rb");
-
-	return $text;
-}
-
 function strFile(string $path): string {
 	return file_get_contents($path);
 	}
