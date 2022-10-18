@@ -19,7 +19,7 @@ $files = (tx\scanDirectory(DB_PATH));
 	<body>
 	<form name="nombre-form" method="<?php echo $formMethod?>" action="<?php echo htmlentities($_SERVER["PHP_SELF"]);?>">
 			<h1>Letter Count</h1>
-			<label for="cars">Choose a car:</label>
+			<label for="filesOption">Choose a text:</label>
 			<select name="filesOption">
 			<option value="" disabled selected>Choose option</option>
 			<?php
