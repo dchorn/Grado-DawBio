@@ -2,6 +2,7 @@
     <html lang="en">
 		<head>
 			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Login</title>
 			<link rel="stylesheet" href="css/style.css">
 			<link rel="icon" type="image/x-icon" href="./img/sus.ico">
@@ -10,25 +11,30 @@
 		<body>
 			<div id="MyClockDisplay" class="center clock" onload="showTime()"></div>
 			<div class="center">
-				<div class="center btn-center">
+				<!--<div class="center btn-center">
 					<button id="log-btn" class="btn">Iniciar Sessió</button>
 					<button id="reg-btn" class="btn">Registrar-se</button>
 				</div>
-				<div id="login" class="center">
-					<form class="center">
-					<div>
-						<label for="log-user">Nom d'usuari:</label>
-						<br>
-						<input id="log-user" type="text" name="username">
-						<br>
-						<label for="log-passwd">Contrasenya:</label>
-						<br>
-						<input id="log-passwd" type="password" name="username">
-						<br>
-						<button type="button" id="log-send">Login</button>
-					</div>
-					</form>
+				-->
+
+				<div id="login" class="center container">
+				<form>
+				  <div class="container">
+					<label for="uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="login-uname" id="login-uname" required>
+
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="login-psw" id="login-psw" required>
+						
+					<button type="submit" id="login-submit">Login</button>
+				  </div>
+				  <div class="container" style="background-color:#f1f1f1">
+					<button type="button" class="registerbtn">Register</button>
+				  </div>
+				</form>
 				</div>
+
+				<!--
 				<div id="register" class="center">
 					<form class="center">
 					<div>
@@ -46,6 +52,7 @@
 					</div>
 					</form>
 				</div>
+				-->
 				<div id="response"></div>
 			</div>
 		</body>

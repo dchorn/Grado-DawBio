@@ -1,25 +1,8 @@
 addEventListener('DOMContentLoaded', function() {
 
-    document.getElementById("login").style.display="block";
-    document.getElementById("register").style.display="none";
+    //document.getElementById("register").style.display="none";
 
 // Funcion que pone display:block o display:none dependiendo del boton
-
-	function displayDiv(){
-		var buttons = document.getElementsByTagName("button");
-		var buttonsCount = buttons.length - 1;
-		for (var i = 0; i <= buttonsCount; i += 1) {
-			buttons[i].onclick = function(e) {
-				if (this.id == "log-btn") {
-    				document.getElementById("register").style.display="none";
-    				document.getElementById("login").style.display="block";
-				} else {
-    				document.getElementById("login").style.display="none";
-    				document.getElementById("register").style.display="block";
-				}
-			};
-		}
-	}
 
 // Funcion para que la hora se actualice a tiempo real 
 	function showTime(){
@@ -44,9 +27,9 @@ addEventListener('DOMContentLoaded', function() {
 	}
 
 
-    document.getElementById("log-send").addEventListener("click", function() {
-        var name   = document.getElementById("log-user").value;    
-        var passwd = document.getElementById("log-passwd").value;
+    document.getElementById("login-submit").addEventListener("click", function() {
+        var name   = document.getElementById("login-uname").value;    
+        var passwd = document.getElementById("login-psw").value;
         let user = { // objeto js
             nom: name,
             contra: passwd
@@ -71,6 +54,5 @@ addEventListener('DOMContentLoaded', function() {
 	});
 
 	showTime();
-	displayDiv();
 
 });
