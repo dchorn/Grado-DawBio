@@ -4,7 +4,6 @@
 
 	define('FIELDS', ['password', 'role', 'name']);
 
-
 	function csvToArr(): array {
 	$rows = array_map('str_getcsv', file('./db/users.csv'));	
     $csv    = array();
@@ -27,8 +26,6 @@
 	};
 	return $ret_value;
 	}
-
-	
 
 	function createUser(string $username, string $password, string $name, string $role="user") {
 	$fp = fopen('file.csv', 'a');
