@@ -7,16 +7,11 @@
 			<link rel="stylesheet" href="css/style.css">
 			<link rel="icon" type="image/x-icon" href="./img/sus.ico">
 			<script src="js/index.js"></script>
+			<script src="js/clock.js"></script>
 		</head>
 		<body>
 			<div id="MyClockDisplay" class="center clock" onload="showTime()"></div>
 			<div class="center">
-				<!--<div class="center btn-center">
-					<button id="log-btn" class="btn">Iniciar Sessió</button>
-					<button id="reg-btn" class="btn">Registrar-se</button>
-				</div>
-				-->
-
 				<div id="login" class="center container">
 				<form>
 				  <div class="container">
@@ -26,33 +21,35 @@
 					<label for="psw"><b>Password</b></label>
 					<input type="password" placeholder="Enter Password" name="login-psw" id="login-psw" required>
 						
-					<button type="submit" id="login-submit">Login</button>
+					<button type="button" id="login-submit">Login</button>
 				  </div>
 				  <div class="container" style="background-color:#f1f1f1">
-					<button type="button" class="registerbtn">Register</button>
+					<button type="button" class="registerbtn" id="register-btn">Register</button>
 				  </div>
 				</form>
 				</div>
 
-				<!--
-				<div id="register" class="center">
-					<form class="center">
-					<div>
-						<label for="username">Nom d'usuari:</label>
-						<br>
-						<input id="username" type="text" name="username">
-						<br>
-						<label for="username">Contrasenya:</label>
-						<br>
-						<input id="username" type="password" name="username">
-						<br>
-						<label for="username">Repeteix la contrasenya:</label>
-						<br>
-						<input id="username" type="password" name="username">
+				<div id="register" class="center container">
+					<form>
+					<div class="container">
+						<label for="register-uname"><b>Complete Name</b></label>
+						<input type="text" placeholder="Enter Name and Surname" name="-register-name" id="register-name">
+						
+						<label for="register-uname"><b>Username</b></label>
+						<input type="text" placeholder="Enter Username" name="-register-uname" id="register-uname">
+
+						<label for="register-psw"><b>Password</b></label>
+						<input type="password" name="register-psw" placeholder="Enter Password" id="register-psw">
+						
+						<label for="register-psw2"><b>Write Password Again</b></label>
+						<input type="password" name="register-psw2" placeholder="Enter Password" id="register-psw2">
 					</div>
+					<button type="button" id="register-submit">Login</button>
+				    <div class="container" style="background-color:#f1f1f1">
+					    <button type="button" class="registerbtn" id="login-btn">Login</button>
+				    </div>
 					</form>
 				</div>
-				-->
 				<div id="response"></div>
 			</div>
 		</body>
