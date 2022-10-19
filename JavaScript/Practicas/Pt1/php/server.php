@@ -14,11 +14,6 @@
 	return $csv;
 	}
 
-	//$csv = csvToArr();
-	//echo '<pre>';
-	//print_r($csv);
-	//echo '</pre>';
-	
 	function searchUser(string $username, string $password): string {
 	$users = csvToArr();
 	if (array_key_exists($username, $users)) {
@@ -31,6 +26,14 @@
 		$ret_value = json_encode("Username not found");
 	};
 	return $ret_value;
+	}
+
+	
+
+	function createUser(string $username, string $password, string $name, string $role="user") {
+	$fp = fopen('file.csv', 'a');
+	fputcsv($fp, [$username,$password,$role,$name]);
+	fclose($fp);
 }
 	
     //paso de JSON, cadena de texto, a variable de PHP
