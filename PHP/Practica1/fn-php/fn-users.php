@@ -69,7 +69,7 @@ function insertUser(
 
 		// Write $somecontent to our opened file.
 		foreach ($writeList as $fields) {
-			fputcsv($fp, $fields);
+			fputcsv($fp, $fields, separator: ';');
 		}
 		return true;
 	}
