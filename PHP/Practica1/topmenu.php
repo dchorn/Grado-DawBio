@@ -44,8 +44,9 @@ if (isset($_SESSION['user_valid'])) {
 <div>
 <?php
 if (isset($_SESSION['user_valid'])) {
-	print_r($_SESSION['user']);
-	print_r($_SESSION['rol']);
+	$name = $_SESSION['name'];
+	$rol = $_SESSION['rol'];
+	echo "Name: $name, Rol: $rol";
 }
 ?>
 </div>

@@ -14,7 +14,7 @@
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 	<div class="form-group">
-      <label for="username">Email:</label>
+      <label for="username">User:</label>
       <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
     </div>
     <div class="form-group">
@@ -41,6 +41,7 @@
 				if (($username === $result[0]) && ($password === $result[1])) {  //check values
 					$_SESSION["user_valid"] = true;
 					$_SESSION["user"] = $username;
+					$_SESSION["name"] = $result[3]." ".$result[4];
 					$_SESSION["rol"] = $result[2];
 					header("Location: index.php");  //redirect to application page
 					exit;
