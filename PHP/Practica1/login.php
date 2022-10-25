@@ -1,4 +1,10 @@
-<?php  session_start();?>
+<?php session_start();
+/*
+ * Login form, after inserting the values, it checks if they are in the database,
+ * if they exist, you enter in your session and be redirect to the home.
+ * Denys Chorny, 25/10/2022
+ * */
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,31 +33,29 @@
     <button type="submit" name="loginsubmit" class="btn btn-default">Submit</button>
   </form>
 	<?php
-	require_once './fn-php/fn-users.php';
-		if ( (filter_has_var(INPUT_POST, 'username')) && (filter_has_var(INPUT_POST, 'password')) ) { //variables received
-			$username = htmlentities(trim($_POST['username']));
-			$password = htmlentities(trim($_POST['password']));
+require_once './fn-php/fn-users.php';
+if ((filter_has_var(INPUT_POST, 'username')) && (filter_has_var(INPUT_POST, 'password'))) { //variables received
+    $username = htmlentities(trim($_POST['username']));
+    $password = htmlentities(trim($_POST['password']));
 
-			$result = searchUser($username, $password);
+    $result = searchUser($username, $password); //checks user if it exists
 
-			if ( (strlen($username)==0) || (strlen($password)==0) ) {  //values not provided.
-				echo "<p>User and password required.</p>";
-				echo "<p>[<a href='login.php'>Login</a>]</p>";                      
-			} else { 
-				if (($username === $result[0]) && ($password === $result[1])) {  //check values
-					$_SESSION["user_valid"] = true;
-					$_SESSION["user"] = $username;
-					$_SESSION["name"] = $result[3]." ".$result[4];
-					$_SESSION["rol"] = $result[2];
-					header("Location: index.php");  //redirect to application page
-					exit;
-				}
-				else {  //bad login: redirect to login page again.
-					echo "<p>Access denied.</p>";
-				}
-			}
-		}
-		?>
+    if ((strlen($username) == 0) || (strlen($password) == 0)) { //values not provided.
+        echo "<p>User and password required.</p>";
+    } else {
+        if (($username === $result[0]) && ($password === $result[1])) { //check values $result[0] = password, $result[1] = password in the db
+            $_SESSION["user_valid"] = true;
+            $_SESSION["user"] = $username;
+            $_SESSION["name"] = $result[3] . " " . $result[4]; // $result[3] and $result[4] are the name and the surname in the db
+            $_SESSION["rol"] = $result[2]; //$result[2] is the rol in the db
+            header("Location: index.php"); //redirect to application page
+            exit;
+        } else { //bad login: redirect to login page again.
+            echo "<p>Access denied.</p>";
+        }
+    }
+}
+?>
 </div>
 </body>
 </html>
