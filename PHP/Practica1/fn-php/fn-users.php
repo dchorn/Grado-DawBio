@@ -1,6 +1,12 @@
 <?php
+/**
+ * Login and Register functions, search login users in the data base.
+ * Search register user in database, if the user does not exist, cerates one.
+ * Denys Chorny, 20/10/2022
+ * **/
+
 define('FIELDS', ['password','role','name','surname']);
-define('DB_PATH','../files/users.txt');
+define('DB_PATH','./files/users.txt');
 
 /**
  * Transform a (.csv, .txt, .json, ...) to asociative array, taking the first row to be the username and the values the rest.
@@ -23,9 +29,6 @@ function csvToArr(): array {
  * */
 function searchUser(string $username, string $password): string | array {
 	$users = csvToArr();
-	echo "<pre>";
-	print_r($users);
-	echo "</pre>";
 	if (array_key_exists($username, $users)) {
 		if ($users[$username]["password"] == $password) {
 			$ret_value = [$username,$users[$username]["password"],$users[$username]["role"],$users[$username]["name"],$users[$username]["surname"]];
@@ -53,8 +56,6 @@ function insertUser(
 	string $role,
 	string $name,
 	string $surname): bool {
-	//TODO
-	
 	if (!$fp = fopen(DB_PATH, 'a')) {
 		echo "Cannot open file (DB_PATH)";
 		return false;
@@ -62,7 +63,7 @@ function insertUser(
 	}
 	
 	if(array_key_exists($username, csvToArr())) {
-		echo "The user alredy exists";
+		echo "The user alredy exists ";
 		return false;
 	} else {
 		$writeList = array(array($username, $password, $role, $name, $surname)); 

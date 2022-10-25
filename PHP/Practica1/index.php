@@ -16,10 +16,9 @@ session_start();
     <div class="container-fluid">
         <?php include_once "topmenu.php";?>
         <div class="container">
-        <h2>Restaurant application</h2>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-</p>
+		<h2>Restaurant application</h2>
+	<img src="https://media.istockphoto.com/photos/modern-restaurant-interior-design-picture-id1211547141?k=20&m=1211547141&s=612x612&w=0&h=KiZX3NBZVCK4MlSh4BJ8hZNSJcTIMbNSSV2yusw2NmM=" alt="Restaurant picture">
+	<p>Bienvenidos al restaurante la Mariscada!</p>
         </div>
         <?php include_once "footer.php";?>
     </div>

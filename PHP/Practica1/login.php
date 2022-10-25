@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +13,7 @@
 <div class="container-fluid">
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-    <div class="form-group">
+	<div class="form-group">
       <label for="username">Email:</label>
       <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
     </div>
@@ -25,6 +26,31 @@
     </div>
     <button type="submit" name="loginsubmit" class="btn btn-default">Submit</button>
   </form>
+	<?php
+	require_once './fn-php/fn-users.php';
+		if ( (filter_has_var(INPUT_POST, 'username')) && (filter_has_var(INPUT_POST, 'password')) ) { //variables received
+			$username = htmlentities(trim($_POST['username']));
+			$password = htmlentities(trim($_POST['password']));
+
+			$result = searchUser($username, $password);
+
+			if ( (strlen($username)==0) || (strlen($password)==0) ) {  //values not provided.
+				echo "<p>User and password required.</p>";
+				echo "<p>[<a href='login.php'>Login</a>]</p>";                      
+			} else { 
+				if (($username === $result[0]) && ($password === $result[1])) {  //check values
+					$_SESSION["user_valid"] = true;
+					$_SESSION["user"] = $username;
+					$_SESSION["rol"] = $result[2];
+					header("Location: index.php");  //redirect to application page
+					exit;
+				}
+				else {  //bad login: redirect to login page again.
+					echo "<p>Access denied.</p>";
+				}
+			}
+		}
+		?>
 </div>
 </body>
 </html>

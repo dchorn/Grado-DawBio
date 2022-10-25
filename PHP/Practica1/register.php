@@ -30,6 +30,27 @@
     </div>
     <button type="submit" name="registersubmit" class="btn btn-default">Submit</button>
   </form>
+	<?php
+	require_once './fn-php/fn-users.php';
+	if ( (filter_has_var(INPUT_POST, 'username')) && (filter_has_var(INPUT_POST, 'password')) && (filter_has_var(INPUT_POST, 'name')) && (filter_has_var(INPUT_POST, 'surname'))) { //variables received
+		$username = htmlentities(trim($_POST['username']));
+		$password = htmlentities(trim($_POST['password']));
+		$name = htmlentities(trim($_POST['name']));
+		$surname = htmlentities(trim($_POST['surname']));
+
+		if ((strlen($username)==0) || (strlen($password)==0) ) {  //values not provided.
+			echo "<p>User and password required.</p>";
+			echo "<p>[<a href='login.php'>Login</a>]</p>";                      
+		} else { 
+				insertUser($username, $password, "registered", $name, $surname);
+				$_SESSION["user_valid"] = true;
+				$_SESSION["rol"] = "registered";
+				$_SESSION["user"] = $username;
+				header("Location: index.php");  //redirect to application page
+				exit;
+			}
+		}
+	?>
 </div>
 </body>
 </html>
