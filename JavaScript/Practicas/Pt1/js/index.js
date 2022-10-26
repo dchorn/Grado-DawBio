@@ -17,27 +17,27 @@ addEventListener('DOMContentLoaded', function() {
 	// Register to PHP
     document.getElementById("register-submit").addEventListener("click", function() {
         var user   = document.getElementById("register-uname").value;    
-        var passwd = document.getElementById("register-psw").value;
+        var password = document.getElementById("register-psw").value;
         var  name  = document.getElementById("register-name").value;
         let registerUser = { // objeto js
             usuari: user,
-            contra: passwd,
+            contra: password,
 			nom: name
         };
 
 	//enviar aquest objecte al servidor:
-		let xhr = new XMLHttpRequest();
-		xhr.open("POST", "./php/server.php");//obrir conexio 
+		let xhrReg = new XMLHttpRequest();
+		xhrReg.open("POST", "./php/server.php");//obrir conexio 
 
-		xhr.send(JSON.stringify(registerUser));//enviament de dades
+		xhrReg.send(JSON.stringify(registerUser));//enviament de dades
 		
 
-		xhr.onload=function() { //esperar a rebre les dades
-			if (xhr.status !=200) { // analiza el estado http
-				alert(`ERROR! ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+		xhrReg.onload=function() { //esperar a rebre les dades
+			if (xhrReg.status !=200) { // analiza el estado http
+				alert(`ERROR! ${xhrReg.status}: ${xhrReg.statusText}`); // ej. 404: No encontrado
 			} else {
 				// xhr.response es un JSON que viene des de PHP.
-				let responseServer = JSON.parse(xhr.response); // reconvertir la respuesta/ parsearla
+				let responseServer = JSON.parse(xhrReg.response); // reconvertir la respuesta/ parsearla
 				document.getElementById("response").innerHTML=responseServer;
 			};
 		};
