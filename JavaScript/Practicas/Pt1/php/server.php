@@ -33,7 +33,6 @@ function searchUser(string $username, string $password): string
 function createUser($username, $password, $rol, $name)
 {
     $fp = fopen(DB_FILE, 'a');
-    var_dump($fp);
     fputcsv($fp, [$username, $password, $rol, $name], ",");
     fclose($fp);
 }
@@ -49,13 +48,5 @@ if ($operator === 'login') {
 }
 elseif($operator === 'register') {
 	createUser($entrada['username'],$entrada['password'],'client',$entrada['name']);
-	echo "User Created";
+	echo json_encode("User Created");
 }
-
-//$name   = $entrada->{'nom'};
-//$username = $entrada->{'usuari'};
-//$password = $entrada->{'contra'};
-
-
-//envio del resultado imprimiendolo: variable PHP a JSON
-//echo searchUser($name, $password);
