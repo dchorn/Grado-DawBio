@@ -16,13 +16,11 @@ addEventListener('DOMContentLoaded', function() {
 
 	// Register to PHP
     document.getElementById("register-submit").addEventListener("click", function() {
-        var user   = document.getElementById("register-uname").value;    
-        var password = document.getElementById("register-psw").value;
-        var  name  = document.getElementById("register-name").value;
         let registerUser = { // objeto js
-            usuari: user,
-            contra: password,
-			nom: name
+			'operator': 'register',
+			'username': document.getElementById("register-uname").value,
+            'password': document.getElementById("register-psw").value,
+			'name': document.getElementById("register-name").value
         };
 
 	//enviar aquest objecte al servidor:
@@ -47,12 +45,11 @@ addEventListener('DOMContentLoaded', function() {
 
 	// Login to PHP
     document.getElementById("login-submit").addEventListener("click", function() {
-        var name   = document.getElementById("login-uname").value;    
-        var passwd = document.getElementById("login-psw").value;
         let user = { // objeto js
-            nom: name,
-            contra: passwd
-        };
+			'operator': 'login',
+			'username': document.getElementById("login-uname").value,
+			'password': document.getElementById("login-psw").value
+		};
 
 	//enviar aquest objecte al servidor:
 		let xhr = new XMLHttpRequest();
