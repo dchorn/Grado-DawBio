@@ -7,7 +7,20 @@ addEventListener('DOMContentLoaded', function() {
 		document.cookie = cname + "=" + cvalue + ";" + "SameSite=None; Secure" + ";path=/;";
 	}
 
-   document.getElementById("register").style.display="none";
+	function getCookie(cookieName) {
+	  let cookie = {};
+	  document.cookie.split(';').forEach(function(el) {
+		let [key,value] = el.split('=');
+		cookie[key.trim()] = value;
+	  })
+		if (cookie[cookieName]) {
+	  		return true;
+		} else {
+			return false;
+		}
+	}
+
+	document.getElementById("register").style.display="none";
 
 // Funcion que pone display:block o display:none dependiendo del boton
 		function displayElements() {
@@ -20,6 +33,28 @@ addEventListener('DOMContentLoaded', function() {
 				document.getElementById("register").style.display = "block"
 			})
 		}
+
+		function logOut() {
+			document.getElementById("logout-btn").addEventListener("click", function () {
+			const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
+		document.getElementById("logout-btn").style.display = "none";
+				document.getElementById("login").style.display = "block";
+			});
+		};
+			
+		function hideElements() {
+				document.getElementById("login").style.display = "none";
+				document.getElementById("register").style.display = "none";
+				document.getElementById("logout-btn").style.display = "block";
+		}
+
+	if(getCookie("IdSession") === false) {
+		document.getElementById("logout-btn").style.display = "none";
+	};
+
+	if(getCookie("IdSession") === true) {
+		hideElements();
+	};
 
 	// Register to PHP
     document.getElementById("register-submit").addEventListener("click", function() {
@@ -74,6 +109,7 @@ addEventListener('DOMContentLoaded', function() {
 	
 				if(responseServer[responseServer.length-1] === true) {
 					setCookie("IdSession", responseServer[0] ,1);
+					hideElements();
 					document.getElementById("response").innerHTML=responseServer[0]+" "+responseServer[1];
 				} else { 
 					document.getElementById("response").innerHTML=responseServer[0];
@@ -82,4 +118,5 @@ addEventListener('DOMContentLoaded', function() {
 
 	});
 	displayElements();
+	logOut();
 });
