@@ -1,5 +1,12 @@
 addEventListener('DOMContentLoaded', function() {
 
+	function setCookie(cname, cvalue, exdays) {
+		var date = new Date();
+		date.setTime(date.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+ date.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + "SameSite=None; Secure" + ";path=/;";
+	}
+
    document.getElementById("register").style.display="none";
 
 // Funcion que pone display:block o display:none dependiendo del boton
@@ -64,6 +71,12 @@ addEventListener('DOMContentLoaded', function() {
 			} else {
 				// xhr.response es un JSON que viene des de PHP.
 				let responseServer = JSON.parse(xhr.response); // reconvertir la respuesta/ parsearla
+				//setCookie(responseServer);
+				//
+				//console.log(responseServer[responseServer.length - 1]);
+				//if(responseServer[responseServer.length - 1] === 'true') {
+				setCookie("IdSession", responseServer[0] ,1);
+				//}	
 				document.getElementById("response").innerHTML=responseServer;
 			};
 		};
