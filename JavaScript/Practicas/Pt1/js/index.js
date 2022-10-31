@@ -71,14 +71,13 @@ addEventListener('DOMContentLoaded', function() {
 			} else {
 				// xhr.response es un JSON que viene des de PHP.
 				let responseServer = JSON.parse(xhr.response); // reconvertir la respuesta/ parsearla
-				//setCookie(responseServer);
-				//
-				//console.log(responseServer[responseServer.length - 1]);
-				//if(responseServer[responseServer.length - 1] === 'true') {
-				setCookie("IdSession", responseServer[0] ,1);
-				//}	
-				document.getElementById("response").innerHTML=responseServer;
-			};
+	
+				if(responseServer[responseServer.length-1] === true) {
+					setCookie("IdSession", responseServer[0] ,1);
+					document.getElementById("response").innerHTML=responseServer[0]+" "+responseServer[1];
+				} else { 
+					document.getElementById("response").innerHTML=responseServer[0];
+				}};
 		};
 
 	});
