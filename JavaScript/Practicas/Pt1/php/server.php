@@ -20,12 +20,12 @@ function searchUser(string $username, string $password): string
     $users = csvToArr();
     if (array_key_exists($username, $users)) {
         if ($users[$username]["password"] == $password) {
-            $ret_value = json_encode([$username, $users[$username]["role"]]);
+            $ret_value = json_encode([$username, $users[$username]["role"], true]);
         } else {
-            $ret_value = json_encode("Password does not match");
+            $ret_value = json_encode(["Password does not match", false]);
         }
     } else {
-        $ret_value = json_encode("Username not found");
+        $ret_value = json_encode(["Username not found", false]);
     };
     return $ret_value;
 }
