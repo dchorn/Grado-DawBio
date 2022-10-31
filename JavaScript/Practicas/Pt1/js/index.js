@@ -32,23 +32,31 @@ addEventListener('DOMContentLoaded', function() {
 				document.getElementById("login").style.display = "none"
 				document.getElementById("register").style.display = "block"
 			})
+
+			document.getElementById("booking-btn").addEventListener("click", function () {
+				document.getElementById("logged").style.display = "block"
+			})
 		}
 
 		function logOut() {
 			document.getElementById("logout-btn").addEventListener("click", function () {
 			const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
-		document.getElementById("logout-btn").style.display = "none";
-				document.getElementById("login").style.display = "block";
+			document.getElementById("logout-btn").style.display = "none";
+			document.getElementById("booking-btn").style.display = "none"
+			document.getElementById("logged").style.display = "none"
+			document.getElementById("login").style.display = "block";
 			});
 		};
 			
 		function hideElements() {
 				document.getElementById("login").style.display = "none";
 				document.getElementById("register").style.display = "none";
+				document.getElementById("booking-btn").style.display = "block";
 				document.getElementById("logout-btn").style.display = "block";
 		}
 
 	if(getCookie("IdSession") === false) {
+		document.getElementById("booking-btn").style.display = "none";
 		document.getElementById("logout-btn").style.display = "none";
 	};
 
@@ -77,7 +85,7 @@ addEventListener('DOMContentLoaded', function() {
 				alert(`ERROR! ${xhrReg.status}: ${xhrReg.statusText}`); // ej. 404: No encontrado
 			} else {
 				// xhr.response es un JSON que viene des de PHP.
-				let responseServer = JSON.parse(xhrReg.response); // reconvertir la respuesta/ parsearla
+				let responseServer = JSON.parse(xhrReg.response); // reconvertir la respuesta/ parsearla:
 				document.getElementById("response").innerHTML=responseServer;
 			};
 		};
