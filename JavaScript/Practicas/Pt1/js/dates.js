@@ -30,6 +30,7 @@ Date.prototype.subMonths = function (value) {
 	return this;
 };
 
+// formats dates, add and substract month to the dates. Add atributtes to the html dates.
 function minMaxDates(ID, months) {
 	var from = document.getElementById(ID);
 	var maxDate = new Date();
