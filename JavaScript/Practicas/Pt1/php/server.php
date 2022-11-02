@@ -44,9 +44,8 @@ $entrada = json_decode($entry, true);
 $operator = $entrada['operator'];
 
 if ($operator === 'login') {
-	echo searchUser($entrada['username'], $entrada['password']);
-}
-elseif($operator === 'register') {
-	createUser($entrada['username'],$entrada['password'],'client',$entrada['name']);
-	echo json_encode("User Created");
+    echo searchUser($entrada['username'], $entrada['password']);
+} elseif ($operator === 'register') {
+    createUser($entrada['username'], $entrada['password'], 'client', $entrada['name']);
+    echo json_encode("User Created");
 }
