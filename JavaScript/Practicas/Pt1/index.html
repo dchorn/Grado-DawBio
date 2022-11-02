@@ -1,104 +1,107 @@
-    <!DOCTYPE html>
-    <html lang="en">
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>Login</title>
-			<link rel="stylesheet" href="css/style.css">
-			<link rel="icon" type="image/x-icon" href="./img/sus.ico">
-			<script src="js/index.js"></script>
-			<script src="js/clock.js"></script>
-		</head>
-		<body>
-			<div id="MyClockDisplay" class="center clock" onload="showTime()"></div>
-			<div class="center">
-				<button type="button" class="logout" id="logout-btn">Logout</button>
-				<button type="button" class="logout" id="booking-btn">Booking</button>
-				<div id="login" class="center container">
-				<form>
-				  <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/x-icon" href="./img/sus.ico">
+	<script src="js/index.js"></script>
+	<script src="js/clock.js"></script>
+	<script src="js/dates.js"></script>
+</head>
+
+<body>
+	<div id="MyClockDisplay" class="center clock" onload="showTime()"></div>
+	<div class="center">
+		<button type="button" class="logout" id="logout-btn">Logout</button>
+		<button type="button" class="logout" id="booking-btn">Booking</button>
+		<div id="login" class="center container">
+			<form>
+				<div class="container">
 					<label for="uname"><b>Username</b></label>
 					<input type="text" placeholder="Enter Username" name="login-uname" id="login-uname" required>
 
 					<label for="psw"><b>Password</b></label>
 					<input type="password" placeholder="Enter Password" name="login-psw" id="login-psw" required>
-						
-					<button type="button" id="login-submit">Login</button>
-				  </div>
-				  <div class="container" style="background-color:#f1f1f1">
-					<button type="button" class="registerbtn" id="register-btn">Register</button>
-				  </div>
-				</form>
-				</div>
-				<div id="logged" style="display:none">
-					<div>
-						<form>
-							<div>
-								<label class="label" for="origen">Origen:</label>
-								<div>
-									<div>
-										<select id="sOrigen" name="origen"></select>
-									</div>
-								</div>
-							</div>
-							<div>
-								<label for="desti">Destino:</label>
-								<div>
-									<div>
-										<select id="sDestino" name="desti"></select>
-									</div>
-								</div>
-							</div>
-							<div>
-								<label for="from">Desde: <input id="from" type="date" name="from"></label>
-							</div>
-							<div>
-								<label for="todate">Hasta: <input id="todate" type="date" name="todate"></label>
-							</div>
-							<div>
-								<p >Cantidad Pasajeros:</p>
-								<div class="control">
-									<label class="radio"><input id="npass1" type="radio" name="nPass" value="1">1</label>
-									&nbsp;
-									<label class="radio"><input id="npass2" type="radio" name="nPass" value="2">2</label>
-									&nbsp;
-									<label class="radio"><input id="npass3" type="radio" name="nPass" value="3">3</label>
-									&nbsp;
-									<label class="radio"><input id="npass4" type="radio" name="nPass" value="4">4</label>
-									&nbsp;
-								</div>
-							</div>
-							<div>
-								<div>
-									<button id="submit_booking" class="button" type="button" name="submit_booking" disabled>Confirmar</button>
-									<button id="reset" class="button" type="reset" name="reset_booking">Canceŀlar</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div id="register" class="center container">
-					<form>
-					<div class="container">
-						<label for="register-uname"><b>Complete Name</b></label>
-						<input type="text" placeholder="Enter Name and Surname" name="-register-name" id="register-name">
-						
-						<label for="register-uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="-register-uname" id="register-uname">
 
-						<label for="register-psw"><b>Password</b></label>
-						<input type="password" name="register-psw" placeholder="Enter Password" id="register-psw">
-						
-						<label for="register-psw2"><b>Write Password Again</b></label>
-						<input type="password" name="register-psw2" placeholder="Enter Password" id="register-psw2">
-					</div>
-					<button type="button" id="register-submit">Register</button>
-				    <div class="container" style="background-color:#f1f1f1">
-					    <button type="button" class="registerbtn" id="login-btn">Login</button>
-				    </div>
-					</form>
+					<button type="button" id="login-submit">Login</button>
 				</div>
-				<div id="response"></div>
+				<div class="container" style="background-color:#f1f1f1">
+					<button type="button" class="registerbtn" id="register-btn">Register</button>
+				</div>
+			</form>
+		</div>
+		<div id="logged" style="display:none">
+			<div>
+				<form>
+					<div>
+						<label for="origen">ORIGEN</label>
+						<div>
+							<div>
+								<select id="sOrigen" name="origen"></select>
+							</div>
+						</div>
+					</div>
+					<div>
+						<label for="desti">DESTINO</label>
+						<div>
+							<div>
+								<select id="sDestino" name="desti"></select>
+							</div>
+						</div>
+					</div>
+					<div>
+						<label for="from">Desde: <input id="datefrom" type="date" name="datefrom"></label>
+					</div>
+					<div>
+						<label for="todate">Hasta: <input id="dateto" type="date" name="dateto"></label>
+					</div>
+					<div>
+						<p>Cantidad Pasajeros:</p>
+						<div class="control">
+							<label class="radio"><input id="numpass1" type="radio" name="numPass" value="1">1</label>
+							&nbsp;
+							<label class="radio"><input id="numpass2" type="radio" name="numPass" value="2">2</label>
+							&nbsp;
+							<label class="radio"><input id="numpass3" type="radio" name="numPass" value="3">3</label>
+							&nbsp;
+						</div>
+					</div>
+					<div>
+						<div>
+							<button id="submit_booking" class="button" type="button" name="submit_booking"
+								disabled>Confirmar</button>
+							<button id="reset" class="button" type="reset" name="reset_booking">Canceŀlar</button>
+						</div>
+					</div>
+				</form>
 			</div>
-		</body>
-    </html>
+		</div>
+		<div id="register" class="center container">
+			<form>
+				<div class="container">
+					<label for="register-uname"><b>Complete Name</b></label>
+					<input type="text" placeholder="Enter Name and Surname" name="-register-name" id="register-name">
+
+					<label for="register-uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="-register-uname" id="register-uname">
+
+					<label for="register-psw"><b>Password</b></label>
+					<input type="password" name="register-psw" placeholder="Enter Password" id="register-psw">
+
+					<label for="register-psw2"><b>Write Password Again</b></label>
+					<input type="password" name="register-psw2" placeholder="Enter Password" id="register-psw2">
+				</div>
+				<button type="button" id="register-submit">Register</button>
+				<div class="container" style="background-color:#f1f1f1">
+					<button type="button" class="registerbtn" id="login-btn">Login</button>
+				</div>
+			</form>
+		</div>
+		<div id="response"></div>
+	</div>
+</body>
+
+</html>
