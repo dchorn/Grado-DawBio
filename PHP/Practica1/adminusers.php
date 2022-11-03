@@ -1,5 +1,8 @@
 <?php
 session_start();
+if ($_SESSION["rol"] != 'admin') {
+	header("location: error.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -17,6 +17,7 @@
 </head>
 <body>
 <div class="container-fluid">
+    <?php include_once "topmenu.php";?>
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 	<div class="form-group">
@@ -56,6 +57,10 @@ if ((filter_has_var(INPUT_POST, 'username')) && (filter_has_var(INPUT_POST, 'pas
     }
 }
 ?>
+</div>
+
+</div>
+<?php include_once "footer.php";?>
 </div>
 </body>
 </html>

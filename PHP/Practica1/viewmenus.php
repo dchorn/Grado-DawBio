@@ -1,5 +1,8 @@
 <?php
 session_start();
+if ($_SESSION["rol"] != 'admin' and $_SESSION["rol"] != 'staff' and $_SESSION["rol"] != 'registered') {
+	header("location: error.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
