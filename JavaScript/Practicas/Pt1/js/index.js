@@ -40,11 +40,12 @@ addEventListener('DOMContentLoaded', function () {
 
 	function logOut() {
 		document.getElementById("logout-btn").addEventListener("click", function () {
-			const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
+			const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};SameSite=None; Secure;path=/`));
 			document.getElementById("logout-btn").style.display = "none";
 			document.getElementById("booking-btn").style.display = "none"
 			document.getElementById("logged").style.display = "none"
 			document.getElementById("login").style.display = "block";
+			document.getElementById("response").style.display = "none";
 		});
 	};
 
@@ -53,6 +54,7 @@ addEventListener('DOMContentLoaded', function () {
 		document.getElementById("register").style.display = "none";
 		document.getElementById("booking-btn").style.display = "block";
 		document.getElementById("logout-btn").style.display = "block";
+		document.getElementById("response").style.display = "block";
 	}
 
 	if (getCookie("IdSession") === false) {
