@@ -51,7 +51,6 @@ def get_total_cases(entries: pd.DataFrame) -> pd.DataFrame:
 def get_total_deaths(entries: pd.DataFrame) -> pd.DataFrame:
     df_total_deaths: pd.DataFrame = (entries)
 
-
     death_mask = entries.loc[ : ,'event'] == 'DEATHS' 
 
     df_total_deaths = (entries.loc[death_mask,['disease', 'number']]
@@ -59,7 +58,6 @@ def get_total_deaths(entries: pd.DataFrame) -> pd.DataFrame:
                 .reset_index()
                 .assign(ranking=lambda df: df.index + 1)
     )
-   #  entries.loc[:, ['num_deaths']].sum() => counts
 
     df_total_deaths = df_total_deaths.reindex(columns=['disease', 'number']).sort_values('number', ascending=False)
     df_total_deaths = df_total_deaths.reset_index(drop=True)

@@ -30,20 +30,24 @@ import pandas  as pd
 #   - Write your solution inside the given function.
 #   - Functions must be pure. Remember to delete your print() calls when done.
 # -----------------------------------------------------------------------------
-def merge_cases_and_deaths(entries: pd.DataFrame) -> pd.DataFrame:
-    df_merged_cases_and_deaths: pd.DataFrame = (entries)
+def merge_cases_and_deaths(deaths: pd.DataFrame, cases: pd.DataFrame) -> pd.DataFrame:
 
-    return df_merged_cases_and_deaths
+    df_merged_cases_and_deaths: pd.DataFrame= deaths.merge(cases, how='inner', on="disease")
 
+    df_merged_cases_and_deaths = df_merged_cases_and_deaths.reset_index(drop=True).assign(id=lambda df: df.index)
+    df_merged_cases_and_deaths.rename(columns={"number_x": "deaths", "number_y": "cases"}, inplace=True)
+    df_merged_cases_and_deaths = df_merged_cases_and_deaths.reindex(columns=['id','deaths', 'cases'])
 
+    return df_merged_cases_and_deaths 
 
 # Main
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
 
-    entries: pd.DataFrame = pd.read_csv("data/tycho-fixed.csv", sep=",")
+    deaths: pd.DataFrame = pd.read_csv("output/tycho-q2-deaths.csv", sep=",")
+    cases : pd.DataFrame = pd.read_csv("output/tycho-q2-cases.csv", sep=",")
 
-    merged_cases_and_deaths:  pd.DataFrame = merge_cases_and_deaths(entries)
+    merged_cases_and_deaths:  pd.DataFrame = merge_cases_and_deaths(deaths, cases)
 
     print(merged_cases_and_deaths.head(10))
 
