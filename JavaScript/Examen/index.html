@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="./js/index.js"></script>
+</head>
+
+<body>
+	<div>
+		<h3>Formulario d'Incidencies</h3>
+		<div id="divIncidencia">
+			<form>
+				<label for="selUbicacio">Ubicacio general:</label><br>
+				<div>
+					<div>
+						<select id="sUbi" name="ubi"></select>
+					</div>
+				</div>
+
+				<label for="selEspai">Espai de la incidencia:</label><br>
+				<div>
+					<div>
+						<select id="sEspai" name="espai"></select>
+					</div>
+				</div>
+				<label for="idInventari">Identificador Inventari:</label><br>
+				<div class="col-6">
+					<input type="text" id="idInventari" placeholder="UBiA:232" maxlength="8">
+					<div id="errorD"></div>
+				</div>
+				<button type="button" id="btIncidencia">Enviar</button>
+			</form>
+		</div>
+		<div id="respuestas">
+			<div id="respuesta1"></div>
+			<div id="respuesta2"></div><br>
+		</div>
+		<div id="textIncidencia">
+			<form>
+				<label for="textArea">Descripcio de la incidencia:</label><br>
+				<div>
+					<div>
+						<textarea id="textArea" name="textArea" maxlength="120"></textarea>
+					</div>
+				</div>
+				<div>
+					<label for="dataInc">Dia en que s'hi va detectar:</label><br>
+					<input id="dataInc" type="date" name="dataInc"></input>
+				</div>
+				<label for="tuEmail" maxlength="9">Email de contacto:</label>
+				<div>
+					<input type="email" id="tuEmail" placeholder="ejemplo@dominio.com">
+					<div id="errorE"></div>
+				</div>
+				<div>
+					<p>PRIORITAT:</p>
+					<div>
+						<label class="radio"><input id="prioritat1" type="radio" name="prioritat"
+								value="Baixa">Baixa</label><br>
+						<label class="radio"><input id="prioritat2" type="radio" name="prioritat"
+								value="Normal">Normal</label><br>
+						<label class="radio"><input id="prioritat3" type="radio" name="prioritat"
+								value="Alta">Alta</label><br>
+					</div>
+				</div>
+				<button type="button" id="btIncidenciaText" disabled>Enviar</button>
+			</form>
+			<div id="respuesta3"></div>
+		</div>
+		<div id="respuesta4">
+			<p id="end1"></p>
+			<p id="end2"></p>
+			<p id="end3"></p>
+			<p id="end4"></p>
+			<p id="end5"></p>
+			<p id="end6"></p>
+			<p id="end7"></p>
+		</div>
+	</div>
+</body>
+
+</html>
