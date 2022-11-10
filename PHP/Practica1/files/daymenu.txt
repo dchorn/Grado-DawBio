@@ -1,1 +1,3 @@
 id;category;name
+2;firstcourse;Ensalada;4
+4;dessert;Flan;2

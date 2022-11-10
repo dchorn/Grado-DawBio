@@ -1,1 +1,8 @@
-id;category;name;price
+001;appetiser;Pan con Tomate;3 euros
+002;appetiser;Pan con Mantequilla;3 euros
+003;appetiser;Pan con Pan;3 euros
+011;firstcourse;Ensalada;4 euros
+012;firstcourse;Ensalada con calamares;4 euros
+021;maincourse;Gambas;5 euros
+031;dessert;Flan;2 euros
+041;drink;Cafe;2 euros
