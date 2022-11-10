@@ -75,7 +75,8 @@ if __name__ == "__main__":
 
     ranking_deaths:  pd.DataFrame = get_total_deaths(entries)
 
-    print(entries.dtypes)
+    print(ranking_deaths)
+    
 
 
 # -----------------------------------------------------------------------------
