@@ -71,9 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}else{
 				document.getElementById("errorDa").innerHTML="";
                 errorFecha=false;
-               
 			}
-					
         }
 		else{
 			errorFecha=true;//hay error
@@ -84,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
    
 });
     
-      
 function comprovaBoto(){
    
     if(!errorName && !errorApellidos && !errorEmail && !errorDni && !errorFecha){
@@ -107,8 +104,6 @@ function validaNomCognoms(value){
     }{
         return true;//hay errores!!!
     }
- 
-       
 }
 
 
