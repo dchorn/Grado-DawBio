@@ -42,8 +42,10 @@ class Model {
      */
     public function addUser(User $user) : int {
         $result = 0;
-        $dao = DaoFactory::getDao("user");
-        $result = $dao->insert($user);
+		$dao = DaoFactory::getDao("user");
+		if ($dao !== null) {
+			$result = $dao->insert($user);	
+		}
         return $result;
     }
     
