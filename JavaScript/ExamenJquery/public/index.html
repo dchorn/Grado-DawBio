@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Denys - Examen Jquery</title>
+		<link rel="shortcut icon" href="#">
+		<!--CSS-->
+		<link rel="stylesheet" href="./css/styles.css">
+		<link rel="stylesheet" href="./css/jquery-ui.css">
+		
+		<!--JQUERY-->
+		<!--<script src="https://code.jquery.com/jquery-3.6.2.js" defer></script>-->
+		<script src="./vendor/jquery/jquery-3.6.2.min.js" ></script>
+		<script src="./vendor/jquery/jquery-ui.js" ></script>
+
+		<!--JavaScript-->
+		<script src="./js/Class/ProjectObj.js"></script>
+		<script src="./js/main.js"></script>
+	</head>
+	<body>
+		<h1>Denys - Examen Jquery</h1>
+		<button type="button"  id="aboutme_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">About Me</button>
+		<button type="button"  id="myprojects_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">My Projects</button>
+		<button type="button"  id="intranet_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Intranet</button>
+
+		<div id="contenedor">
+			<div id="aboutme_d">
+				<h2>Denys Chorny ~ DAW-BIO2 ~ 2022<h2>
+			</div>
+			<div id="projects_d">
+				<img src="./img/handyman.jpg" alt="handyman image"></img>
+			</div>
+			<div id="intranet_d">
+				<h2>INTRANET<h2>
+				<form>
+					<label for="uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="login-uname" id="login-uname" required>
+					<br>
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="login-psw" id="login-psw" required>
+
+					<button type="button" id="login-submit">Login</button>
+				</form>
+				<div id="logged"></div>
+			</div>
+			<div id="logged_d">
+				<h2>FORMULARIO INTRANET<h2>
+				<form>
+					<label for="form-nom"><b>Nom</b></label>
+					<input type="text" name="form-nom" id="form-nom" required>
+					<br>
+					<label for="form-descripcio"><b>Descripcio</b></label>
+					<textarea name="form-descripcio" id="form-descripcio" required></textarea><br>	
+					<label><b>Categoria:</b></label><br>
+					<label for="backend">Backend</label>
+					<input type="radio" id="backend" name="categoria" required>
+					<label for="frontend">Frontend</label>
+					<input type="radio" id="frontend" name="categoria" required>
+					<label for="obligatori">Obligatori</label>
+					<input type="radio" id="obligatori" name="categoria" required>
+
+					<br>
+					<button type="button" id="form-submit">Enviar</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
