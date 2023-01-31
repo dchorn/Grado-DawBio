@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+    session_start();
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);   
     ini_set('error_reporting', E_ALL);
@@ -13,8 +14,9 @@
   <body>
       <?php
         include "views/topmenu.php";
+       
         if (isset($_SESSION['username'])) {
-            echo "Logged user: ".$_SESSION['username'];
+            echo "Logged user: ".$_SESSION['username']." Age: ".$_SESSION['age'];
         }
       ?>
       <div class="content">

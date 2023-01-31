@@ -12,7 +12,7 @@ if (!is_null($message)) {
         <input type="text" name="username" id ="username" placeholder="Enter username" value="<?php if (!is_null($username)) echo $username; ?>">
         <label for="password">Password:</label>
         <input type="password" name="password" id ="password" placeholder="Enter password" value="">
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
         <input type="text" name="action" id="action" hidden value="login">
     </fieldset>
 </form>

@@ -12,19 +12,18 @@
   </head>
   <body>
       <?php
+        //include "views/topmenu.html";
         include "views/topmenu.php";
         if (isset($_SESSION['username'])) {
             echo "Logged user: ".$_SESSION['username'];
+            // echo "Logged user: ".$_SESSION['rol'];
         }
       ?>
-      <div class="content">
+      <h2>Store application</h2>
       <?php
         //dynamic html content generated here by controller.
         require_once 'controllers/MainController.php';
         (new MainController())->processRequest();
-        ?>
-      </div>
-      <?php include "views/footer.php"; ?>
-
+      ?>
   </body>
 </html>

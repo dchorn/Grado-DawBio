@@ -6,9 +6,21 @@ require_once "lib/DaoFactory.php";
  * @author ProvenSoft
  */
 class Model {
-    
-    public function __construct() {
-        
+    private string $user_file;
+
+    private string $products_file;
+
+    private string $delimiter;
+
+    private UserPersistFileDao $userDao;
+
+    private ProductsPersistFileDao $productDao;    
+
+    function __construct(){
+        $this->user_file = "files/users.txt";
+        $this->products_file = "files/products.txt";
+        $this->delimiter = ";";
+        $this->userDao = new UserPersistFileDao($this->user_file,$this->delimiter);
     }
 
     /** methods related to user **/
@@ -95,5 +107,25 @@ class Model {
         //TODO
         return $result;
     }
-    
+
+	 public function validate($array_login){
+            $alltheusers =  $this->userDao->selectAll();
+            foreach($alltheusers as $elem){
+                $check = array();
+                $username = $elem->getUsername();
+                $password = $elem->getPassword();
+                $rol = $elem->getRole();
+                array_push($check,$username);
+                array_push($check,$password);
+                if($check == $array_login){
+                    $existe = array($username,$rol);
+                    break;
+                }else{
+                    $existe = array();
+                }
+                $check = array();
+            }
+            return $existe;
+        }
+
 }

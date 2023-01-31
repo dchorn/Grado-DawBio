@@ -1,6 +1,7 @@
 <?php
 require_once 'lib/ViewLoader.php';
 require_once 'model/Model.php';
+require_once 'lib/LoginFormValidation.php';
 /**
  * Main controller for store application.
  *
@@ -95,6 +96,9 @@ class MainController {
             case 'home':  //home page.
                 $this->doHomePage();
                 break;
+            case 'login':   //login.
+                $this->doLogin();
+                break;
             case 'product/add':   //add product.
                 $this->doAddProduct();
                 break;
@@ -158,8 +162,27 @@ class MainController {
     /**
      * displays login form
      */
-    private function doLoginForm() {
-        $this->view->show("login-form.php", []);
+	private function doLoginForm() {
+		$login = LoginFormValidation::getData();
+		$data['login'] = $login;
+        $this->view->show("login-form.php", $data);
+    }
+
+    public function doLogin(){
+        $login = LoginFormValidation::getData();
+        $data['login'] = $login;
+        $username = $login[0];
+        $valido = $this->model->validate($data['login']);
+        $data['correcto'] = $valido;
+        if(!empty($valido)){
+            $rol = $valido[1];
+            $_SESSION["rol"] = $rol;
+            $_SESSION['username'] = $username;
+            header("Location: index.php");
+        }else{
+            var_dump("no");
+            $this->view->show('login.php',$data);
+        }
     }
 
     /**
@@ -229,7 +252,7 @@ class MainController {
      * adds a user sent by user form
      */
     private function doAddUser() {
-        //TODO
+		//TODO
         $data['message'] = "No implemented yet!";
         $this->view->show("error-page.php", $data);
     } 
