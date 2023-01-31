@@ -1,0 +1,27 @@
+<h1 class="display-4"> Hola clase de DAW BIO!!!</h1>
+<button class="btn btn-danger" (click)="increment()">Pruébame!</button>
+
+<!--Estilos Bootwatch-->
+<button type="button" class="btn btn-outline-primary" (click)="decrement()">Clica</button>
+
+<p>
+  Dona'm el teu segon cognom:
+  <input type="text">
+</p>
+
+<div>
+  <p>Nom : {{nom}}</p>
+  <p>Edat:{{edat}}</p>
+  <p>Colors: {{colors[0]}},{{colors[1]}},{{colors[2]}}</p>
+  <p>{{esActiu()}}</p>
+  <p *ngIf="edat>=18;else menor">Ets major d'edat</p>
+  <ng-template #menor>Ets menor d'edat</ng-template>
+<table>
+  <tr><td>Colors</td></tr>
+  <tr class="" *ngFor="let color of colors;let i=index">
+    <td>{{i+1}} : {{color}}</td>
+  </tr>
+</table>
+  
+</div>
+
