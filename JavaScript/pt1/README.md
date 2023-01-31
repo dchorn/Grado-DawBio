@@ -1,4 +1,8 @@
 # Pt1
+# TODO
+# - Documentation Script (At the top of the script do a excerpt of what it does)
+# - Documentation for blocks (@param, @returns of blocks/funcions)
+# - Inner Documentation (Resume of diferent lines of how the code works)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
 
